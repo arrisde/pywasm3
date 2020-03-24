@@ -1,0 +1,7 @@
+cffi==1.14.0
+packaging==20.3
+pycparser==2.20
+pyparsing==2.4.6
+scikit-build==0.10.0
+six==1.14.0
+wheel==0.34.2
