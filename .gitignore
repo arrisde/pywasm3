@@ -1,2 +1,5 @@
 .venv
 .vscode
+.python-version
+pywasm3.egg-info
+pywasm3
