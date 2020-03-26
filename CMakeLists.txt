@@ -6,7 +6,7 @@ set(PyExec "python")
 
 find_package(PythonExtensions REQUIRED)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC -std=c99")
 
 add_custom_command(
     OUTPUT

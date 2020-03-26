@@ -16,11 +16,10 @@ def build_cffi(src_in: str, src_out: str) -> None:
         else:
             include_file_abs = os.path.join(os.path.dirname(__file__), include_file)
 
-        with open(include_file_abs) as f:
+        with open(include_file_abs, encoding="utf8") as f:
             ffiBuilder.cdef(f.read())
 
-    #cffi_includes.insert(0, src_in)
-    code_lines = [f'#include "{f}"' for f in cffi_includes]
+    code_lines = ['#include "' + f + '"' for f in cffi_includes]
     cffi_code = '\n'.join(code_lines)
 
     ffiBuilder.set_source("_pywasm3",
@@ -29,11 +28,7 @@ def build_cffi(src_in: str, src_out: str) -> None:
         # the scenes cffi generates a .c file which contains a Python-friendly
         # wrapper around each of the functions.
         cffi_code,
-        # The important thing is to include the pre-built lib in the list of
-        # libraries we are linking against:
-        include_dirs=[os.path.dirname(__file__)],
-        #libraries=["pywasm3"],
-        #library_dirs=[os.path.dirname(__file__),],
+        include_dirs=[os.path.dirname(__file__)]
     )
 
     ffiBuilder.emit_c_code(outfile)

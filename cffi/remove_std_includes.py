@@ -36,8 +36,8 @@ std_includes = [
 # remove #includes referencing headers from std lib as 
 # we don't want to generate ffi code for these
 def remove_std_includes(infile: str, outfile: str) -> None:
-    with open(infile, "r") as input:
-        with open(outfile, "w") as output:
+    with open(infile, "r", encoding="utf8") as input:
+        with open(outfile, "w", encoding="utf8") as output:
             for line in input:
                 m = re.search("#include <(.+?)>", line)
                 if m:
